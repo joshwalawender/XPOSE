@@ -5,18 +5,17 @@ from setuptools import setup, find_packages
 #
 entry_points = """
 [ginga.rv.plugins]
-myglobalplugin=plugins:setup_myglobalplugin
-mylocalplugin=plugins:setup_mylocalplugin
+XPOSE=plugins:setup_XPOSE
 """
 
 setup(
-    name = 'MyGingaPlugins',
+    name = 'XPOSE',
     version = "0.1.dev",
-    description = "Plugin examples for the Ginga reference viewer",
-    author = "Tycho Brahe",
+    description = "Universal XPOSE GUI",
+    author = "Josh Walawender",
     license = "BSD",
     # change this to your URL
-    url = "http://ejeschke.github.com/ginga-plugin-template",
+    url = "https://github.com/joshwalawender/XPOSE",
     install_requires = ["ginga>=2.6.1"],
     packages = find_packages(),
     include_package_data = True,

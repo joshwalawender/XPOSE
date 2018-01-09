@@ -43,16 +43,10 @@ import os.path
 # my plugins are available here
 p_path = os.path.split(__file__)[0]
 
-def setup_myglobalplugin():
-    spec = Bunch(path=os.path.join(p_path, 'MyGlobalPlugin.py'),
-                 module='MyGlobalPlugin', klass='MyGlobalPlugin',
-                 tab='My Global', workspace='right', start=False)
-    return spec
-
-def setup_mylocalplugin():
-    spec = Bunch(path=os.path.join(p_path, 'MyLocalPlugin.py'),
-                 module='MyLocalPlugin', klass='MyLocalPlugin',
-                 workspace='dialogs')
+def setup_XPOSE():
+    spec = Bunch(path=os.path.join(p_path, 'XPOSE.py'),
+                 module='XPOSE', klass='XPOSE',
+                 workspace='dialogs', start=True)
     return spec
 
 # END
