@@ -5,13 +5,13 @@ from setuptools import setup, find_packages
 #
 entry_points = """
 [ginga.rv.plugins]
-XPOSE=plugins:setup_XPOSE
+XPOSE=XPOSE:setup_XPOSE
 """
 
 setup(
     name = 'XPOSE',
     version = "0.1.dev",
-    description = "Universal XPOSE GUI",
+    description = "Exposure control for Keck Instruments",
     author = "Josh Walawender",
     license = "BSD",
     # change this to your URL

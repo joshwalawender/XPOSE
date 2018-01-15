@@ -23,6 +23,13 @@ Components of a global plugin spec:
         the name of the workspace that the plugin should open in
     start: bool
         True if the plugin should be launched at program startup time
+    category: str or None
+        The category for the plugin under the plugin action menus
+        (you can use periods to make sub-menus)
+    menu: str
+        The name of the plugin as shown in the plugin action menus
+    ptype: str
+        Must be 'global'
 
 
 --------
@@ -35,6 +42,13 @@ Components of a local plugin spec:
         the name of the class inside the module implementing the plugin
     workspace: str
         the name of the workspace that the plugin should open in
+    category: str or None
+        The category for the plugin under the plugin action menus
+        (you can use periods to make sub-menus)
+    menu: str
+        The name of the plugin as shown in the plugin action menus
+    ptype: str
+        Must be 'local'
 
 """
 from ginga.misc.Bunch import Bunch
@@ -46,7 +60,8 @@ p_path = os.path.split(__file__)[0]
 def setup_XPOSE():
     spec = Bunch(path=os.path.join(p_path, 'XPOSE.py'),
                  module='XPOSE', klass='XPOSE',
-                 workspace='dialogs', start=True)
+                 ptype='local', workspace='dialogs',
+                 category=None, menu="XPOSE", tab='XPOSE')
     return spec
 
 # END
