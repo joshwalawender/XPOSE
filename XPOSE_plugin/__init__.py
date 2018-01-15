@@ -61,7 +61,7 @@ def setup_XPOSE():
     spec = Bunch(path=os.path.join(p_path, 'XPOSE.py'),
                  module='XPOSE', klass='XPOSE',
                  ptype='local', workspace='dialogs',
-                 category=None, menu="XPOSE", tab='XPOSE')
+                 category="Keck", menu="XPOSE", tab='XPOSE')
     return spec
 
 # END
