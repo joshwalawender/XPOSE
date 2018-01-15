@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 #
 entry_points = """
 [ginga.rv.plugins]
-XPOSE=XPOSE:setup_XPOSE
+XPOSE=XPOSE_plugin:setup_XPOSE
 """
 
 setup(
