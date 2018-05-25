@@ -500,7 +500,7 @@ class XPOSE(GingaPlugin.LocalPlugin):
 
     def cb_set_binning(self, w, index):
         self.INSTR.set_binning(self.INSTR.binnings[index])
-        self.w.binning.set_text(f'{self.INSTR.binning_as_str()}')
+        self.w.binning.set_text(self.INSTR.binning_as_str())
 
 
     def cb_set_obstype(self, w, index):
