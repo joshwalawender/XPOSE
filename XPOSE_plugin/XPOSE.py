@@ -14,6 +14,8 @@ from astropy.io import fits
 from astropy.modeling import models, fitting
 from scipy import ndimage
 from socket import gethostname
+from importlib import import_module
+import Keck
 
 class XPOSE(GingaPlugin.LocalPlugin):
 
@@ -34,9 +36,11 @@ class XPOSE(GingaPlugin.LocalPlugin):
         hostnames = {'nuu': 'MOSFIRE',
                      'mosfireserver': 'MOSFIRE',
                      'vm-mosfire': 'MOSFIRE',
+                     'mosfire': 'MOSFIRE',
                      'lehoula': 'HIRES',
                      'hiresserver': 'HIRES',
                      'vm-hires': 'HIRES',
+                     'hires': 'HIRES',
                      'vm-esi': 'ESI',
                      'vm-nires': 'NIRES',
                      }
@@ -49,21 +53,14 @@ class XPOSE(GingaPlugin.LocalPlugin):
             print(f'Hostname "{self.hostname}" not matched to an instrument.')
             print(f'Assuming default instrument: {instrument}')
 
-        if instrument == 'MOSFIRE':
-            self.INSTR = MOSFIRE()
-        elif instrument == 'HIRES':
-            self.INSTR = HIRES()
-        elif instrument == 'ESI':
-            self.INSTR = ESI()
-        elif instrument == 'LRISb':
-            self.INSTR = LRISb()
-        elif instrument == 'LRISr':
-            self.INSTR = LRISr()
-        elif instrument == 'NIRES':
-            self.INSTR = NIRES()
-        elif instrument == 'NIRESim':
-            self.INSTR = NIRESim()
-        
+        print(f'Trying to instantiate {instrument}')
+        try:
+            INSTR_class = getattr(Keck, instrument)
+            self.INSTR = INSTR_class()
+            print(f'Got instance of {instrument}')
+        except:
+            print(f'Failed to instantiate {instrument}')
+
         print(f"Connected to {self.INSTR.name}")
 
         # Load plugin preferences
