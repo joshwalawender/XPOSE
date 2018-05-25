@@ -158,6 +158,9 @@ class XPOSE(GingaPlugin.LocalPlugin):
                              ('Binning:', 'label',
                               'binning', 'llabel',
                               'set_binning', 'combobox'),
+                             ('OBSTYPE:', 'label',
+                              'obstype', 'llabel',
+                              'set_obstype', 'combobox'),
                             ])
         else:
             captions.extend([
@@ -192,6 +195,14 @@ class XPOSE(GingaPlugin.LocalPlugin):
                 combobox.append_text(binopt)
             b_show.set_binning.set_index(self.INSTR.binnings.index(self.INSTR.binning_as_str()))
             b_show.set_binning.add_callback('activated', self.cb_set_binning)
+
+            b_show.obstype.set_text(f'{self.INSTR.get_obstype()}')
+            combobox = b_show.set_obstype
+            for type in self.INSTR.obstypes:
+                combobox.append_text(type)
+            b_show.set_obstype.set_index(self.INSTR.obstypes.index(self.INSTR.get_obstype()))
+            b_show.set_obstype.add_callback('activated', self.cb_set_obstype)
+
         if self.INSTR.optical is False:
             b_show.coadds.set_text(f'{self.INSTR.coadds:d}')
             b_show.set_coadds.set_text(f'{self.INSTR.coadds:d}')
@@ -493,6 +504,11 @@ class XPOSE(GingaPlugin.LocalPlugin):
     def cb_set_binning(self, w, index):
         self.INSTR.set_binning(self.INSTR.binnings[index])
         self.w.binning.set_text(f'{self.INSTR.binning_as_str()}')
+
+
+    def cb_set_obstype(self, w, index):
+        self.INSTR.set_obstype(self.INSTR.obstype[index])
+        self.w.binning.set_text(f'{self.INSTR.get_obstype()}')
 
 
     def cb_set_coadds(self, w):
