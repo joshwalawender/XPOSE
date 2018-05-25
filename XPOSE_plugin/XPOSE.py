@@ -479,7 +479,7 @@ class XPOSE(GingaPlugin.LocalPlugin):
         This method should be provided and should return the lower case
         name of the plugin.
         """
-        return 'CSU Initializer Plugin'
+        return 'xpose'
 
 
 
