@@ -2,17 +2,16 @@ from ginga import GingaPlugin
 from ginga.gw import Widgets
 
 # import any other modules you want here--it's a python world!
-import os
-from datetime import datetime as dt
-import numpy as np
 from ginga import GingaPlugin, RGBImage, colors
 from ginga.gw import Widgets
 from ginga.misc import ParamSet, Bunch
 from ginga.util import dp
 from ginga.gw.GwHelp import FileSelection
+
+import os
+from datetime import datetime as dt
+import numpy as np
 from astropy.io import fits
-from astropy.modeling import models, fitting
-from scipy import ndimage
 from socket import gethostname
 from importlib import import_module
 import Keck
