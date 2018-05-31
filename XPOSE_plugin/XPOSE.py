@@ -61,7 +61,7 @@ class XPOSE(GingaPlugin.LocalPlugin):
         except:
             print(f'Failed to instantiate {instrument}')
 
-        print(f"Connected to {self.INSTR.name}")
+        print(f"Got instance of {self.INSTR.name}")
 
         # Load plugin preferences
         prefs = self.fv.get_preferences()
