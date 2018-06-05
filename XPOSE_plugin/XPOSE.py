@@ -236,21 +236,21 @@ class XPOSE(GingaPlugin.LocalPlugin):
         ## -----------------------------------------------------
         ## Exposure Buttons
 
-        btns_exp = Widgets.HBox()
-        btns_exp.set_spacing(1)
-
-        btn_start_exposure = Widgets.Button("Take Test Exposure")
-        btn_start_exposure.add_callback('activated',
-                                        lambda w: self.INSTR.start_exposure())
-        btns_exp.add_widget(btn_start_exposure, stretch=0)
-
-        if self.INSTR.optical is True:
-            btn_abort_exposure = Widgets.Button("Abort Test Exposure")
-            btn_abort_exposure.add_callback('activated',
-                                            lambda w: self.INSTR.abort_exposure())
-            btns_exp.add_widget(btn_abort_exposure, stretch=0)
-
-        vbox.add_widget(btns_exp, stretch=0)
+#         btns_exp = Widgets.HBox()
+#         btns_exp.set_spacing(1)
+# 
+#         btn_start_exposure = Widgets.Button("Take Test Exposure")
+#         btn_start_exposure.add_callback('activated',
+#                                         lambda w: self.INSTR.start_exposure())
+#         btns_exp.add_widget(btn_start_exposure, stretch=0)
+# 
+#         if self.INSTR.optical is True:
+#             btn_abort_exposure = Widgets.Button("Abort Test Exposure")
+#             btn_abort_exposure.add_callback('activated',
+#                                     lambda w: self.INSTR.abort_exposure())
+#             btns_exp.add_widget(btn_abort_exposure, stretch=0)
+# 
+#         vbox.add_widget(btns_exp, stretch=0)
 
 
 
@@ -324,26 +324,26 @@ class XPOSE(GingaPlugin.LocalPlugin):
         ## -----------------------------------------------------
         if self.INSTR.name == 'HIRES':
             ## HIRES Dewar
-            fr_dwr = Widgets.Frame(f"HIRES Dewar")
-            captions = [
-                        ("Camera Dewar Level:", "label",
-                         "dewar_level", "llabel",
-                         "Fill Dewar", "button"),
-                        ("Reserve Dewar Level:", "label",
-                         "reserve_level", "llabel"),
-                       ]
-            w_dwr, b_dwr = Widgets.build_info(captions, orientation=orientation)
-            self.w.update(b_dwr)
-
-            b_dwr.dewar_level.set_text(f'{self.INSTR.get_DWRN2LV():5.1f}')
-            b_dwr.reserve_level.set_text(f'{self.INSTR.get_RESN2LV():5.1f}')
-            b_dwr.fill_dewar.add_callback('activated',
-                                          lambda w: self.INSTR.fill_dewar())
-            b_dwr.fill_dewar.set_tooltip(
-                "Fill the camera dewar.  Takes roughly 15 minutes.")
-
-            fr_dwr.set_widget(w_dwr)
-            vbox.add_widget(fr_dwr, stretch=0)
+#             fr_dwr = Widgets.Frame(f"HIRES Dewar")
+#             captions = [
+#                         ("Camera Dewar Level:", "label",
+#                          "dewar_level", "llabel",
+#                          "Fill Dewar", "button"),
+#                         ("Reserve Dewar Level:", "label",
+#                          "reserve_level", "llabel"),
+#                        ]
+#             w_dwr, b_dwr = Widgets.build_info(captions, orientation=orientation)
+#             self.w.update(b_dwr)
+# 
+#             b_dwr.dewar_level.set_text(f'{self.INSTR.get_DWRN2LV():5.1f}')
+#             b_dwr.reserve_level.set_text(f'{self.INSTR.get_RESN2LV():5.1f}')
+#             b_dwr.fill_dewar.add_callback('activated',
+#                                           lambda w: self.INSTR.fill_dewar())
+#             b_dwr.fill_dewar.set_tooltip(
+#                 "Fill the camera dewar.  Takes roughly 15 minutes.")
+# 
+#             fr_dwr.set_widget(w_dwr)
+#             vbox.add_widget(fr_dwr, stretch=0)
 
 
             ## HIRES Exposure Meter
@@ -395,9 +395,9 @@ class XPOSE(GingaPlugin.LocalPlugin):
         btns_close.set_spacing(3)
 
         # Add a close button for the convenience of the user
-#         btn = Widgets.Button("Close")
-#         btn.add_callback('activated', lambda w: self.close())
-#         btns_close.add_widget(btn, stretch=0)
+        btn = Widgets.Button("Close")
+        btn.add_callback('activated', lambda w: self.close())
+        btns_close.add_widget(btn, stretch=0)
 
         btns_close.add_widget(Widgets.Label(''), stretch=1)
         top.add_widget(btns_close, stretch=0)
