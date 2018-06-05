@@ -189,14 +189,16 @@ class XPOSE(GingaPlugin.LocalPlugin):
             combobox = b_show.set_binning
             for binopt in self.INSTR.binnings:
                 combobox.append_text(binopt)
-            b_show.set_binning.set_index(self.INSTR.binnings.index(self.INSTR.binning_as_str()))
+            b_show.set_binning.set_index(self.INSTR.binnings.index(
+                                         self.INSTR.binning_as_str()))
             b_show.set_binning.add_callback('activated', self.cb_set_binning)
 
             b_show.obstype.set_text(f'{self.INSTR.get_obstype()}')
             combobox = b_show.set_obstype
             for type in self.INSTR.obstypes:
                 combobox.append_text(type)
-            b_show.set_obstype.set_index(self.INSTR.obstypes.index(self.INSTR.get_obstype()))
+            b_show.set_obstype.set_index(self.INSTR.obstypes.index(
+                                         self.INSTR.get_obstype()))
             b_show.set_obstype.add_callback('activated', self.cb_set_obstype)
 
         if self.INSTR.optical is False:
@@ -300,17 +302,17 @@ class XPOSE(GingaPlugin.LocalPlugin):
 
         btn_abort_immediately = Widgets.Button("Abort Immediately")
         btn_abort_immediately.add_callback('activated',
-                                           lambda w: self.INSTR.abort_immediately())
+                                  lambda w: self.INSTR.abort_immediately())
         btns_abortseq.add_widget(btn_abort_immediately, stretch=0)
 
         btn_abort_afterframe = Widgets.Button("Abort After Frame")
         btn_abort_afterframe.add_callback('activated',
-                                          lambda w: self.INSTR.abort_afterframe())
+                                 lambda w: self.INSTR.abort_afterframe())
         btns_abortseq.add_widget(btn_abort_afterframe, stretch=0)
 
 #         btn_abort_afterrepeat = Widgets.Button("Abort After Repeat")
 #         btn_abort_afterrepeat.add_callback('activated',
-#                                            lambda w: self.INSTR.abort_afterrepeat())
+#                                   lambda w: self.INSTR.abort_afterrepeat())
 #         btns_abortseq.add_widget(btn_abort_afterrepeat, stretch=0)
 
 
@@ -361,7 +363,8 @@ class XPOSE(GingaPlugin.LocalPlugin):
                         ("Time Remaining (s):", "label",
                          "esttime", "llabel"),
                        ]
-            w_expo, b_expo = Widgets.build_info(captions, orientation=orientation)
+            w_expo, b_expo = Widgets.build_info(captions,
+                                                orientation=orientation)
             self.w.update(b_expo)
             
 #             b_expo.PMT0MPOW.set_text(f'{self.INSTR.expo_get_power_on()}')
