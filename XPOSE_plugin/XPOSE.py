@@ -40,7 +40,6 @@ class XPOSE(GingaPlugin.LocalPlugin):
                      'hiresserver': 'HIRES',
                      'vm-hires': 'HIRES',
                      'hires': 'HIRES',
-                     'vm-esi': 'ESI',
                      'vm-nires': 'NIRES',
                      }
         try:
@@ -59,8 +58,6 @@ class XPOSE(GingaPlugin.LocalPlugin):
             print(f'Got instance of {instrument}')
         except:
             print(f'Failed to instantiate {instrument}')
-
-        print(f"Got instance of {self.INSTR.name}")
 
         # Load plugin preferences
         prefs = self.fv.get_preferences()
@@ -507,7 +504,7 @@ class XPOSE(GingaPlugin.LocalPlugin):
 
     def cb_set_obstype(self, w, index):
         self.INSTR.set_obstype(self.INSTR.obstypes[index])
-        self.w.binning.set_text(f'{self.INSTR.get_obstype()}')
+        self.w.obstype.set_text(f'{self.INSTR.get_obstype()}')
 
 
     def cb_set_coadds(self, w):
